@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Érika de Sousa Alves — Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #0f0f0f;
+    --white: #fafaf8;
+    --gray: #8a8a82;
+    --light: #f0ede8;
+    --accent: #c8b89a;
+    --serif: 'DM Serif Display', serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--white);
+    color: var(--black);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .page-wrap {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  /* Full-bleed sections that need bg color still need inner wrap */
+  .contact-section, footer {
+    background-clip: padding-box;
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    border-bottom: 0.5px solid #e0ddd8;
+    position: sticky;
+    top: 0;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  /* Nav outer wrapper for sticky full-width border */
+  .nav-outer {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid #e0ddd8;
+  }
+  .nav-outer nav {
+    position: static;
+    background: none;
+    backdrop-filter: none;
+    border-bottom: none;
+  }
+  .nav-logo { font-family: var(--serif); font-size: 20px; letter-spacing: -0.3px; text-decoration: none; color: var(--black); }
+  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+  .nav-links a { text-decoration: none; color: var(--gray); font-size: 13px; letter-spacing: 0.04em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--black); }
+  .nav-cta { background: var(--black) !important; color: var(--white) !important; padding: 8px 20px; border-radius: 20px; }
+  .nav-cta:hover { opacity: 0.8; }
+
+  /* HERO */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 62px);
+    align-items: center;
+    padding: 0 48px;
+    gap: 60px;
+    border-bottom: 0.5px solid #e0ddd8;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray);
+    border: 0.5px solid #d0cdc8;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: 66px;
+    line-height: 1.04;
+    letter-spacing: -2px;
+    margin-bottom: 26px;
+  }
+  .hero-title em { font-style: italic; color: var(--gray); }
+  .hero-desc {
+    font-size: 16px;
+    color: var(--gray);
+    line-height: 1.75;
+    max-width: 420px;
+    margin-bottom: 40px;
+  }
+  .hero-btns { display: flex; gap: 16px; align-items: center; }
+  .btn-primary {
+    background: var(--black); color: var(--white);
+    padding: 13px 30px; border-radius: 24px;
+    font-size: 14px; text-decoration: none;
+    transition: opacity 0.2s; font-family: var(--sans);
+  }
+  .btn-primary:hover { opacity: 0.78; }
+  .btn-ghost {
+    color: var(--gray); font-size: 14px;
+    text-decoration: none; transition: color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--black); }
+  .hero-visual {
+    position: relative;
+    height: 580px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .photo-frame {
+    width: 340px;
+    height: 430px;
+    border-radius: 200px 200px 40px 40px;
+    overflow: hidden;
+    position: relative;
+  }
+  .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .badge {
+    position: absolute;
+    background: var(--white);
+    border: 0.5px solid #e0ddd8;
+    border-radius: 14px;
+    padding: 12px 16px;
+    font-size: 12px;
+    color: var(--black);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.07);
+  }
+  .badge-years { top: 80px; right: 16px; }
+  .badge-years .big { font-family: var(--serif); font-size: 30px; line-height: 1; display: block; }
+  .badge-years .small { color: var(--gray); font-size: 11px; letter-spacing: 0.02em; }
+  .badge-avail { bottom: 110px; left: 8px; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+  .dot-green { width: 8px; height: 8px; background: #4caf7d; border-radius: 50%; flex-shrink: 0; animation: pulse-g 2s ease-in-out infinite; }
+  @keyframes pulse-g { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  /* SECTION BASE */
+  .section { padding: 88px 48px; border-bottom: 0.5px solid #e0ddd8; }
+  .section-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 52px; }
+  .section-title { font-family: var(--serif); font-size: 40px; letter-spacing: -0.8px; }
+  .section-link { color: var(--gray); font-size: 13px; text-decoration: none; transition: color 0.2s; }
+  .section-link:hover { color: var(--black); }
+
+  /* CASES */
+  .cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .case-card {
+    border-radius: 20px; overflow: hidden;
+    border: 0.5px solid #e0ddd8;
+    background: var(--white);
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer; text-decoration: none; display: block; color: inherit;
+  }
+  .case-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.09); }
+  .case-card.featured { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; }
+  .case-thumb {
+    height: 260px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; color: rgba(0,0,0,0.25); letter-spacing: 0.05em;
+  }
+  .case-card.featured .case-thumb { height: auto; min-height: 320px; }
+  .case-info { padding: 28px; }
+  .case-card.featured .case-info { display: flex; flex-direction: column; justify-content: center; padding: 44px; }
+  .case-tags { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+  .tag { font-size: 11px; padding: 3px 10px; border-radius: 20px; border: 0.5px solid #d0cdc8; color: var(--gray); letter-spacing: 0.03em; }
+  .case-name { font-family: var(--serif); font-size: 24px; letter-spacing: -0.4px; margin-bottom: 10px; }
+  .case-desc { font-size: 13px; color: var(--gray); line-height: 1.7; }
+  .case-arrow { display: inline-flex; align-items: center; gap: 6px; margin-top: 24px; font-size: 13px; color: var(--gray); transition: color 0.2s; }
+  .case-card:hover .case-arrow { color: var(--black); }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border: 0.5px solid #e0ddd8; border-radius: 20px; overflow: hidden;
+    margin-top: 52px;
+  }
+  .skill-item { padding: 32px 28px; background: var(--white); transition: background 0.2s; border: 0.5px solid #e0ddd8; }
+  .skill-item:hover { background: var(--light); }
+  .skill-icon { font-size: 20px; margin-bottom: 14px; color: var(--accent); }
+  .skill-name { font-size: 15px; font-weight: 500; margin-bottom: 6px; letter-spacing: -0.2px; }
+  .skill-desc { font-size: 12px; color: var(--gray); line-height: 1.65; margin-bottom: 12px; }
+  .skill-tools { display: flex; gap: 6px; flex-wrap: wrap; }
+  .skill-tool { font-size: 10px; padding: 3px 9px; background: var(--light); border-radius: 10px; color: var(--gray); letter-spacing: 0.02em; }
+
+  /* SOBRE */
+  .about-section { padding: 88px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; border-bottom: 0.5px solid #e0ddd8; }
+  .about-title { font-family: var(--serif); font-size: 44px; letter-spacing: -1px; line-height: 1.1; margin-bottom: 24px; }
+  .about-title em { font-style: italic; color: var(--gray); }
+  .about-text { font-size: 15px; color: var(--gray); line-height: 1.8; margin-bottom: 18px; }
+  .about-stats { display: flex; gap: 36px; margin-top: 36px; padding-top: 32px; border-top: 0.5px solid #e0ddd8; }
+  .stat-n { font-family: var(--serif); font-size: 38px; letter-spacing: -1px; line-height: 1; margin-bottom: 4px; }
+  .stat-l { font-size: 12px; color: var(--gray); letter-spacing: 0.03em; }
+  .process-list { list-style: none; }
+  .process-item { display: flex; gap: 20px; align-items: flex-start; padding: 22px 0; border-bottom: 0.5px solid #e0ddd8; }
+  .process-item:last-child { border: none; padding-bottom: 0; }
+  .process-n { font-family: var(--serif); font-size: 11px; color: var(--accent); min-width: 24px; padding-top: 2px; }
+  .process-text strong { display: block; font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+  .process-text span { font-size: 13px; color: var(--gray); line-height: 1.65; }
+
+  /* CONTATO */
+  .contact-section { padding: 88px 48px; text-align: center; background: var(--black); color: var(--white); }
+  .contact-title { font-family: var(--serif); font-size: 56px; letter-spacing: -1.5px; line-height: 1.08; margin-bottom: 18px; }
+  .contact-title em { font-style: italic; color: var(--accent); }
+  .contact-desc { font-size: 15px; color: rgba(255,255,255,0.45); margin-bottom: 52px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.75; }
+  .contact-form { max-width: 520px; margin: 0 auto; text-align: left; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+  .form-group label { font-size: 10px; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: rgba(255,255,255,0.05);
+    border: 0.5px solid rgba(255,255,255,0.1);
+    border-radius: 12px; padding: 13px 16px;
+    color: var(--white); font-family: var(--sans); font-size: 14px;
+    outline: none; transition: border-color 0.2s; width: 100%;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.18); }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: rgba(255,255,255,0.32); }
+  .form-group textarea { resize: none; min-height: 120px; }
+  .form-group select option { background: #1a1a1a; color: var(--white); }
+  .btn-send {
+    width: 100%; background: var(--white); color: var(--black);
+    border: none; border-radius: 24px; padding: 15px;
+    font-family: var(--sans); font-size: 14px; font-weight: 500;
+    cursor: pointer; transition: opacity 0.2s; margin-top: 8px;
+  }
+  .btn-send:hover { opacity: 0.85; }
+  .contact-links { display: flex; gap: 28px; justify-content: center; margin-top: 44px; }
+  .contact-link { color: rgba(255,255,255,0.3); font-size: 13px; text-decoration: none; transition: color 0.2s; letter-spacing: 0.03em; }
+  .contact-link:hover { color: var(--white); }
+
+  /* FOOTER */
+  footer { padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; background: var(--black); border-top: 0.5px solid rgba(255,255,255,0.05); }
+  footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
+
+  /* SCROLL FADE IN */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-links li:not(:last-child) { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 48px 20px; min-height: auto; gap: 40px; }
+    .hero-visual { height: 380px; }
+    .photo-frame { width: 240px; height: 300px; }
+    .hero-title { font-size: 44px; }
+    .section, .about-section, .contact-section { padding: 60px 20px; }
+    .cases-grid, .about-section { grid-template-columns: 1fr; }
+    .case-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .contact-title { font-size: 38px; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
+  }
+
+  /* BigData mockup */
+  .bigdata-mockup {
+    background: #f0ede8;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 20px 16px;
+    flex-direction: column;
+    height: auto !important;
+    min-height: 320px;
+  }
+  .mockup-browser {
+    width: 100%;
+    max-width: 460px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 0.5px solid rgba(0,0,0,0.12);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  }
+  .mockup-bar {
+    background: #f5f3f0;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 0.5px solid rgba(0,0,0,0.08);
+  }
+  .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+  .dot.r { background: #ff5f57; }
+  .dot.y { background: #ffbd2e; }
+  .dot.g { background: #28c840; }
+  .mockup-url {
+    font-size: 10px;
+    color: #aaa;
+    margin-left: 8px;
+    letter-spacing: 0.02em;
+    font-family: var(--sans);
+  }
+  .mockup-screen {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    position: relative;
+    background: #fafaf8;
+  }
+  .screen-main {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    position: absolute;
+    top: 0; left: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .screen-main.active { opacity: 1; }
+  .mockup-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px;
+    background: #f5f3f0;
+    border-top: 0.5px solid rgba(0,0,0,0.06);
+  }
+  .mdot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .mdot.active { background: #c8a96e; }
+</style>
+</head>
+<body>
+
+<div class="nav-outer"><nav>
+  <a href="#" class="nav-logo">Érika.</a>
+  <ul class="nav-links">
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contato" class="nav-cta">Contato</a></li>
+  </ul>
+</nav></div>
+
+<div class="page-wrap">
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <span class="hero-tag">Product Designer · Fortaleza, CE</span>
+    <h1 class="hero-title">Do problema<br>à <em>decisão</em><br>certa.</h1>
+    <p class="hero-desc">Product Designer com foco em discovery, métricas e estratégia — transformando complexidade em produtos digitais que funcionam de verdade.</p>
+    <div class="hero-btns">
+      <a href="#projetos" class="btn-primary">Ver projetos</a>
+      <a href="#sobre" class="btn-ghost">Sobre mim →</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="photo-frame">
+      <img src="images/foto-portfolio.webp" alt="Érika de Sousa Alves — UX Designer">
+    </div>
+    <div class="badge badge-years">
+      <span class="big">4+</span>
+      <span class="small">anos de experiência</span>
+    </div>
+    <div class="badge badge-avail">
+      <span class="dot-green"></span>
+      <span>Disponível para projetos</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETOS -->
+<section class="section" id="projetos">
+  <div class="section-header reveal">
+    <h2 class="section-title">Projetos selecionados</h2>
+    <a href="#" class="section-link">Ver todos →</a>
+  </div>
+  <div class="cases-grid">
+    <a href="case-bigdata.html" class="case-card featured reveal">
+      <div class="case-thumb bigdata-mockup">
+        <div class="mockup-browser">
+          <div class="mockup-bar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="mockup-url">bigdatafortaleza.fortaleza.ce.gov.br</span>
+          </div>
+          <div class="mockup-screen">
+            <img class="screen-main active" id="bd-screen-0" src="images/painel-monitoramento.webp" alt="Painel de monitoramento">
+            <img class="screen-main" id="bd-screen-1" src="images/tela-login.webp" alt="Login">
+            <img class="screen-main" id="bd-screen-2" src="images/funcionalidades-permitidas.webp" alt="Funcionalidades">
+          </div>
+          <div class="mockup-dots">
+            <span class="mdot active" onclick="switchBD(0)"></span>
+            <span class="mdot" onclick="switchBD(1)"></span>
+            <span class="mdot" onclick="switchBD(2)"></span>
+          </div>
+        </div>
+      </div>
+      <div class="case-info">
+        <div class="case-tags">
+          <span class="tag">Data-driven</span>
+          <span class="tag">Setor público</span>
+          <span class="tag">Dashboard</span>
+        </div>
+        <h3 class="case-name">BigData Fortaleza</h3>
+        <p class="case-desc">Produto digital voltado à tomada de decisão baseada em dados para gestores públicos. Conduzi pesquisas com usuários e stakeholders para traduzir dados complexos em experiências acessíveis e estratégicas.</p>
+        <span class="case-arrow">Ver case completo →</span>
+      </div>
+    </a>
+    <a href="#" class="case-card reveal">
+      <div class="case-thumb" style="background: linear-gradient(135deg, #dde4e8 0%, #c8d4da 100%); flex-direction: column; gap: 8px;">
+        <span style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(0,0,0,0.2);">Dell</span>
+        <span style="font-size: 10px; letter-spacing: 0.04em; color: rgba(0,0,0,0.15);">International</span>
+      </div>
+      <div class="case-info">
+        <div class="case-tags"><span class="tag">IA</span><span class="tag">Enterprise</span><span class="tag">Internacional</span></div>
+        <h3 class="case-name">Troubleshooting com IA — Dell</h3>
+        <p class="case-desc">Projeto internacional em parceria com a Dell, explorando melhorias em processos de troubleshooting com uso de inteligência artificial. Reuniões e alinhamentos em inglês com stakeholders globais.</p>
+        <span class="case-arrow">Ver case →</span>
+      </div>
+    </a>
+    <a href="#" class="case-card reveal">
+      <div class="case-thumb" style="background: linear-gradient(135deg, #e4e0e8 0%, #d2ceda 100%); flex-direction: column; gap: 8px;">
+        <span style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(0,0,0,0.18);">Adm. Pública</span>
+        <span style="font-size: 10px; color: rgba(0,0,0,0.12);">Federal</span>
+      </div>
+      <div class="case-info">
+        <div class="case-tags"><span class="tag">Gov Federal</span><span class="tag">Sistemas complexos</span></div>
+        <h3 class="case-name">Produto para administração federal</h3>
+        <p class="case-desc">Melhoria de experiência em sistema de alta complexidade para a administração pública federal. Pesquisas qualitativas, testes de usabilidade e redesenho de fluxos críticos. <em style="color: var(--accent); font-style: normal; font-size: 11px;">Detalhes sob NDA.</em></p>
+        <span class="case-arrow">Ver case →</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="section-header reveal">
+    <h2 class="section-title">Habilidades & ferramentas</h2>
+  </div>
+  <div class="skills-grid reveal">
+    <div class="skill-item">
+      <div class="skill-icon">◐</div>
+      <div class="skill-name">Discovery & Estratégia</div>
+      <div class="skill-desc">Problem framing, hipóteses e decisão orientada a evidências.</div>
+      <div class="skill-tools"><span class="skill-tool">Opp. Solution Tree</span><span class="skill-tool">RICE</span><span class="skill-tool">OKRs</span></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-icon">◎</div>
+      <div class="skill-name">UX Research</div>
+      <div class="skill-desc">Entrevistas, testes de usabilidade e análise de dados qualitativos.</div>
+      <div class="skill-tools"><span class="skill-tool">Maze</span><span class="skill-tool">Hotjar</span><span class="skill-tool">Surveys</span></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-icon">◈</div>
+      <div class="skill-name">Métricas de Produto</div>
+      <div class="skill-desc">Funil de produto, retenção, ativação e análise de comportamento.</div>
+      <div class="skill-tools"><span class="skill-tool">Amplitude</span><span class="skill-tool">GA4</span><span class="skill-tool">Mixpanel</span></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-icon">⬡</div>
+      <div class="skill-name">Product Design</div>
+      <div class="skill-desc">Wireframes, prototipação e fluxos centrados em resultado.</div>
+      <div class="skill-tools"><span class="skill-tool">Figma</span><span class="skill-tool">FigJam</span><span class="skill-tool">Figma AI</span></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-icon">◇</div>
+      <div class="skill-name">Facilitação & Produto</div>
+      <div class="skill-desc">Design Sprints, workshops e alinhamento com times de produto.</div>
+      <div class="skill-tools"><span class="skill-tool">Miro</span><span class="skill-tool">FigJam</span><span class="skill-tool">Notion</span></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-icon">◉</div>
+      <div class="skill-name">Domínios de negócio</div>
+      <div class="skill-desc">Interesse e conhecimento em produtos financeiros e decisão do usuário.</div>
+      <div class="skill-tools"><span class="skill-tool">Fintech</span><span class="skill-tool">Gov Digital</span><span class="skill-tool">Enterprise</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="about-section" id="sobre">
+  <div class="reveal">
+    <h2 class="about-title">Produto é sobre <em>decisão</em>,<br>não só tela.</h2>
+    <p class="about-text">Sou Product Designer com experiência em projetos complexos nos setores público e privado, atuando na construção de produtos digitais voltados à tomada de decisão baseada em dados.</p>
+    <p class="about-text">Ao longo da minha trajetória, tenho participado desde a descoberta do problema até a definição de soluções — conduzindo pesquisas, testes de usabilidade e estruturando fluxos que tornam jornadas complexas mais claras e eficientes.</p>
+    <p class="about-text">Atualmente aprofundo minha atuação em métricas de produto e estratégia, com experiência em contextos internacionais e interesse especial em produtos financeiros.</p>
+    <div class="about-stats">
+      <div><div class="stat-n">4+</div><div class="stat-l">anos de mercado</div></div>
+      <div><div class="stat-n">3</div><div class="stat-l">setores de atuação</div></div>
+      <div><div class="stat-n">2</div><div class="stat-l">idiomas de trabalho</div></div>
+    </div>
+  </div>
+  <div class="reveal">
+    <ul class="process-list">
+      <li class="process-item">
+        <span class="process-n">01</span>
+        <div class="process-text">
+          <strong>Entender o problema real</strong>
+          <span>Questionar o que foi pedido antes de propor qualquer solução.</span>
+        </div>
+      </li>
+      <li class="process-item">
+        <span class="process-n">02</span>
+        <div class="process-text">
+          <strong>Discovery com usuários</strong>
+          <span>Entrevistas, observação e análise de comportamento para embasar decisões.</span>
+        </div>
+      </li>
+      <li class="process-item">
+        <span class="process-n">03</span>
+        <div class="process-text">
+          <strong>Hipóteses e priorização</strong>
+          <span>Definir o que construir primeiro com base em impacto e evidências.</span>
+        </div>
+      </li>
+      <li class="process-item">
+        <span class="process-n">04</span>
+        <div class="process-text">
+          <strong>Medir e iterar</strong>
+          <span>Validar com usuários reais e medir impacto no produto.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+</div>
+<!-- CONTATO -->
+<section class="contact-section" id="contato">
+  <div style="max-width:1400px;margin:0 auto;">
+  <h2 class="contact-title">Vamos resolver<br>um problema <em>juntos?</em></h2>
+  <p class="contact-desc">Aberta a projetos freelance, PJ remoto e oportunidades CLT — especialmente em produto, fintech e ambientes internacionais.</p>
+  <form class="contact-form" onsubmit="handleSubmit(event)">
+    <div class="form-row">
+      <div class="form-group">
+        <label>Nome</label>
+        <input type="text" placeholder="Seu nome" required>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="seu@email.com" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Tipo de projeto</label>
+      <select>
+        <option value="">Selecionar...</option>
+        <option>UX Research</option>
+        <option>Product Design</option>
+        <option>Design System</option>
+        <option>Consultoria</option>
+        <option>Oportunidade CLT</option>
+        <option>Outro</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Mensagem</label>
+      <textarea placeholder="Me conte sobre o projeto, prazo e orçamento..." required></textarea>
+    </div>
+    <button class="btn-send" type="submit">Enviar mensagem</button>
+  </form>
+  <div class="contact-links">
+    <a href="https://linkedin.com/in/erikadsalves" target="_blank" class="contact-link">LinkedIn</a>
+    <a href="https://behance.net/erikadsalves" target="_blank" class="contact-link">Behance</a>
+    <a href="https://dribbble.com/erikadsalves" target="_blank" class="contact-link">Dribbble</a>
+    <a href="/cdn-cgi/l/email-protection#4e2b3c27252f2a3d2f22382b3d0e29232f2722602d2123" class="contact-link"><span class="__cf_email__" data-cfemail="3a5f4853515b5e495b564c5f497a5d575b535614595557">[email&#160;protected]</span></a>
+  </div>
+</div>
+</section>
+
+<footer>
+  <div style="max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;width:100%"><p>© 2026 Érika de Sousa Alves</p><p>Product Designer · Fortaleza, Brasil</p></div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // BigData screen switcher
+  function switchBD(idx) {
+    document.querySelectorAll('.screen-main').forEach((s,i) => s.classList.toggle('active', i===idx));
+    document.querySelectorAll('.mdot').forEach((d,i) => d.classList.toggle('active', i===idx));
+  }
+  // Auto-rotate
+  let bdIdx = 0;
+  setInterval(() => { bdIdx = (bdIdx+1)%3; switchBD(bdIdx); }, 3000);
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-send');
+    btn.textContent = 'Enviado! Em breve entro em contato ✓';
+    btn.style.    btn.style.background = '#4caf7d';
+    btn.style.color = '#fff';
+    setTimeout(() => {
+      btn.textContent = 'Enviar mensagem';
+      btn.style.background = '';
+      btn.style.color = '';
+      e.target.reset();
+    }, 4000);
+  }
+</script>
+</body>
+</html>
