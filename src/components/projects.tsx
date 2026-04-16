@@ -176,7 +176,15 @@ export default function Projects() {
                 <div className="flex flex-col gap-5">
                   <TagList items={["Data-driven", "Setor público", "Dashboard"]} />
                   <div>
-                    <h3 className="mb-3 text-[26px] tracking-[-0.3px] text-foreground font-semibold">
+                    <h3
+                      className="mb-3 font-bold text-foreground"
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: "26px",
+                        letterSpacing: "-0.02em",
+                        lineHeight: 1.15,
+                      }}
+                    >
                       BigData Fortaleza
                     </h3>
                     <p className="text-[14px] leading-relaxed tracking-[0.01em] text-muted-foreground">
@@ -213,7 +221,15 @@ export default function Projects() {
             <div className="flex flex-col gap-5">
               <TagList items={["IA", "Enterprise", "Internacional"]} />
               <div>
-                <h3 className="mb-3 text-[26px] tracking-[-0.3px] text-foreground font-semibold">
+                <h3
+                  className="mb-3 font-bold text-foreground"
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "26px",
+                    letterSpacing: "-0.02em",
+                    lineHeight: 1.15,
+                  }}
+                >
                   Troubleshooting com IA — Dell
                 </h3>
                 <p className="text-[14px] leading-relaxed tracking-[0.01em] text-muted-foreground">
@@ -241,7 +257,15 @@ export default function Projects() {
             <div className="flex flex-col gap-5">
               <TagList items={["Gov Federal", "Sistemas complexos"]} />
               <div>
-                <h3 className="mb-3 text-[26px] tracking-[-0.3px] text-foreground font-semibold">
+                <h3
+                  className="mb-3 font-bold text-foreground"
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "26px",
+                    letterSpacing: "-0.02em",
+                    lineHeight: 1.15,
+                  }}
+                >
                   Produto para administração federal
                 </h3>
                 <p className="text-[14px] leading-relaxed tracking-[0.01em] text-muted-foreground">
