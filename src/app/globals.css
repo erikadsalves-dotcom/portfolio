@@ -107,17 +107,22 @@
 
 /* ── devices.css MacBook Pro responsive scaling ──
    devices.css ships fixed 740×434 dimensions. Wrap the device in this
-   container to scale it proportionally to whatever width is available. */
+   container to scale it proportionally to whatever width is available.
+   transform-origin: top center keeps the device horizontally centered
+   inside the container at any width. */
 .macbook-scale {
   container-type: inline-size;
   width: 100%;
   aspect-ratio: 740 / 434;
   overflow: hidden;
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 .macbook-scale > .device {
+  flex-shrink: 0;
   transform: scale(calc(100cqw / 740));
-  transform-origin: top left;
+  transform-origin: top center;
 }
 
 /* ── Halftone / dot-matrix text effect ── */
