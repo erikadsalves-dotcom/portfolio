@@ -121,7 +121,9 @@
 }
 .macbook-scale > .device {
   flex-shrink: 0;
-  transform: scale(calc(100cqw / 740));
+  /* length / length = unitless number (required by scale()).
+     min(1, …) prevents upscaling above the device's natural 740px. */
+  transform: scale(min(1, calc(100cqw / 740px)));
   transform-origin: top center;
 }
 
