@@ -33,16 +33,16 @@ export default function Navbar() {
         animate={
           scrolled
             ? {
-                backgroundColor: "rgba(255,255,255,0.70)",
+                backgroundColor: "rgba(247,244,237,0.82)",
                 backdropFilter: "blur(24px)",
                 borderBottomWidth: "1px",
                 borderBottomColor: "hsl(var(--border) / 0.5)",
               }
             : {
-                backgroundColor: "rgba(255,255,255,0)",
+                backgroundColor: "rgba(247,244,237,0)",
                 backdropFilter: "blur(0px)",
                 borderBottomWidth: "1px",
-                borderBottomColor: "rgba(255,255,255,0)",
+                borderBottomColor: "rgba(247,244,237,0)",
               }
         }
         transition={{ duration: 0.4, ease: "easeInOut" }}
