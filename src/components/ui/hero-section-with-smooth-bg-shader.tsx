@@ -41,9 +41,10 @@ export function HeroShader({
 
   return (
     <section
-      className={`relative w-full min-h-screen overflow-hidden flex items-center justify-center ${className}`}
+      className={`relative w-full min-h-screen flex items-center justify-center ${className}`}
     >
-      <div className="hero-shader-canvas absolute inset-0 w-full h-full [&_canvas]:!w-full [&_canvas]:!h-full [&_canvas]:!block">
+      {/* Shader canvas — overflow hidden only here so gradient can bleed out */}
+      <div className="hero-shader-canvas absolute inset-0 w-full h-full overflow-hidden [&_canvas]:!w-full [&_canvas]:!h-full [&_canvas]:!block">
         {mounted && (
           <>
             <MeshGradient
@@ -60,18 +61,31 @@ export function HeroShader({
             <div
               className={`absolute inset-0 pointer-events-none ${veilOpacity}`}
             />
-            {/* Bottom fade — blends shader smoothly into page background */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-full"
-              style={{
-                background:
-                  "linear-gradient(to bottom, rgba(247,244,237,0) 0%, rgba(247,244,237,0.05) 25%, rgba(247,244,237,0.20) 50%, rgba(247,244,237,0.55) 75%, rgba(247,244,237,0.92) 92%, var(--background) 100%)",
-              }}
-            />
           </>
         )}
       </div>
+
+      {/* Bottom fade — extends BEYOND the section to eliminate any hard edge */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[1]"
+        style={{
+          height: "70%",
+          background:
+            "linear-gradient(to bottom, rgba(247,244,237,0) 0%, rgba(247,244,237,0.08) 20%, rgba(247,244,237,0.25) 40%, rgba(247,244,237,0.55) 60%, rgba(247,244,237,0.85) 80%, #f7f4ed 95%)",
+        }}
+      />
+      {/* Bleed patch — overlaps into the next section */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 z-[1]"
+        style={{
+          bottom: "-40px",
+          height: "80px",
+          background: "#f7f4ed",
+        }}
+      />
+
       <div className="relative z-10 w-full">{children}</div>
     </section>
   );
