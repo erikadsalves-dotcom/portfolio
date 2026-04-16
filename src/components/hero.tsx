@@ -146,41 +146,12 @@ export default function Hero() {
               à
             </span>
 
-            {/* "dec" */}
+            {/* "decisão" */}
             <span
               className="italic text-foreground"
               style={{ fontFamily: "var(--font-editorial)" }}
             >
-              dec
-            </span>
-
-            {/* The "i" — Botticelli's Venus */}
-            <span
-              className="relative mx-[0.01em] inline-block overflow-hidden"
-              style={{
-                width: "clamp(18px, 3vw, 44px)",
-                height: "clamp(46px, 8.5vw, 124px)",
-                borderRadius: "clamp(5px, 0.8vw, 14px)",
-                boxShadow:
-                  "inset 0 0 0 1.5px rgba(0,0,0,0.06), 0 2px 12px rgba(0,0,0,0.12)",
-              }}
-            >
-              <Image
-                src="/images/art-letter.jpg"
-                alt="Homem Vitruviano, Leonardo da Vinci — referência de história da arte"
-                fill
-                className="object-cover"
-                style={{ objectPosition: "50% 20%" }}
-                sizes="44px"
-              />
-            </span>
-
-            {/* "são" */}
-            <span
-              className="italic text-foreground"
-              style={{ fontFamily: "var(--font-editorial)" }}
-            >
-              são
+              decisão
             </span>
           </motion.div>
 
