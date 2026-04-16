@@ -78,8 +78,8 @@ export default function Skills() {
     >
       {/* Section header */}
       <h2
-        className="font-serif mb-8 sm:mb-10 text-foreground"
-        style={{ fontSize: "clamp(28px, 5vw, 40px)", lineHeight: 1.15 }}
+        className="font-bold mb-8 sm:mb-10 text-foreground"
+        style={{ fontFamily: "var(--font-display)", fontSize: "clamp(28px, 5vw, 40px)", lineHeight: 1.15, letterSpacing: "-0.02em" }}
       >
         Habilidades &amp; ferramentas
       </h2>

@@ -94,8 +94,8 @@ export default function About() {
         >
           {/* Title */}
           <h2
-            className="font-serif text-foreground"
-            style={{ fontSize: "clamp(30px, 5.5vw, 44px)", lineHeight: 1.15, letterSpacing: "-0.5px" }}
+            className="font-bold text-foreground"
+            style={{ fontFamily: "var(--font-display)", fontSize: "clamp(30px, 5.5vw, 44px)", lineHeight: 1.15, letterSpacing: "-0.02em" }}
           >
             Produto é sobre{" "}
             <em

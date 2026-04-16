@@ -123,8 +123,8 @@ export default function Projects() {
       >
         <motion.h2
           variants={headerVariants}
-          className="font-serif tracking-[-0.5px] text-foreground"
-          style={{ fontSize: "clamp(30px, 5vw, 40px)", lineHeight: 1.1 }}
+          className="font-bold text-foreground"
+          style={{ fontFamily: "var(--font-display)", fontSize: "clamp(30px, 5vw, 40px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
         >
           Projetos selecionados
         </motion.h2>
@@ -175,7 +175,7 @@ export default function Projects() {
                 <div className="flex flex-col gap-5">
                   <TagList items={["Data-driven", "Setor público", "Dashboard"]} />
                   <div>
-                    <h3 className="mb-3 font-serif text-[26px] tracking-[-0.3px] text-foreground">
+                    <h3 className="mb-3 text-[26px] tracking-[-0.3px] text-foreground font-semibold">
                       BigData Fortaleza
                     </h3>
                     <p className="text-[14px] leading-relaxed tracking-[0.01em] text-muted-foreground">
@@ -212,7 +212,7 @@ export default function Projects() {
             <div className="flex flex-col gap-5">
               <TagList items={["IA", "Enterprise", "Internacional"]} />
               <div>
-                <h3 className="mb-3 font-serif text-[26px] tracking-[-0.3px] text-foreground">
+                <h3 className="mb-3 text-[26px] tracking-[-0.3px] text-foreground font-semibold">
                   Troubleshooting com IA — Dell
                 </h3>
                 <p className="text-[14px] leading-relaxed tracking-[0.01em] text-muted-foreground">
@@ -240,7 +240,7 @@ export default function Projects() {
             <div className="flex flex-col gap-5">
               <TagList items={["Gov Federal", "Sistemas complexos"]} />
               <div>
-                <h3 className="mb-3 font-serif text-[26px] tracking-[-0.3px] text-foreground">
+                <h3 className="mb-3 text-[26px] tracking-[-0.3px] text-foreground font-semibold">
                   Produto para administração federal
                 </h3>
                 <p className="text-[14px] leading-relaxed tracking-[0.01em] text-muted-foreground">
