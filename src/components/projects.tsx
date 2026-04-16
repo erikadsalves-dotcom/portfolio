@@ -155,8 +155,9 @@ export default function Projects() {
             className="group block no-underline"
           >
             <div
-              className="grid grid-cols-1 overflow-hidden rounded-2xl border border-border bg-white transition-all duration-300 md:grid-cols-2"
+              className="grid grid-cols-1 overflow-hidden rounded-2xl border border-border transition-all duration-300 md:grid-cols-2"
               style={{
+                background: "#fbf7ee",
                 boxShadow: "0 2px 12px 0 rgba(0,0,0,0.06)",
               }}
               onMouseEnter={(e) => {
@@ -192,7 +193,7 @@ export default function Projects() {
               </div>
 
               {/* Right: mockup browser */}
-              <div className="flex items-center justify-center bg-[#eeecea] p-6 md:p-8">
+              <div className="flex items-center justify-center bg-[#ece2d0] p-6 md:p-8">
                 <div className="w-full">
                   <MockupBrowser />
                 </div>
@@ -206,7 +207,7 @@ export default function Projects() {
           <div
             className="flex h-full cursor-default flex-col justify-between gap-6 overflow-hidden rounded-2xl border border-border p-6 sm:p-8 transition-all duration-300 hover:scale-[1.01] hover:shadow-xl"
             style={{
-              background: "linear-gradient(135deg, #dde4e8 0%, #c8d4da 100%)",
+              background: "linear-gradient(135deg, #e5decc 0%, #cfc3a8 100%)",
             }}
           >
             <div className="flex flex-col gap-5">
@@ -234,7 +235,7 @@ export default function Projects() {
           <div
             className="flex h-full cursor-default flex-col justify-between gap-6 overflow-hidden rounded-2xl border border-border p-6 sm:p-8 transition-all duration-300 hover:scale-[1.01] hover:shadow-xl"
             style={{
-              background: "linear-gradient(135deg, #e4e0e8 0%, #d2ceda 100%)",
+              background: "linear-gradient(135deg, #ecdfcf 0%, #d6bfa4 100%)",
             }}
           >
             <div className="flex flex-col gap-5">
