@@ -42,8 +42,9 @@ export function HeroShader({
   return (
     <section
       className={`relative w-full min-h-screen flex items-center justify-center ${className}`}
+      style={{ backgroundColor: "#f7f4ed" }}
     >
-      {/* Shader canvas — overflow hidden only here so gradient can bleed out */}
+      {/* Shader canvas */}
       <div className="hero-shader-canvas absolute inset-0 w-full h-full overflow-hidden [&_canvas]:!w-full [&_canvas]:!h-full [&_canvas]:!block">
         {mounted && (
           <>
@@ -61,30 +62,22 @@ export function HeroShader({
             <div
               className={`absolute inset-0 pointer-events-none ${veilOpacity}`}
             />
+            {/*
+              Bottom fade — makes the shader fully invisible by 82%.
+              The last ~18% of the hero is pure #f7f4ed background,
+              identical to the page — so no edge is possible.
+            */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-full"
+              style={{
+                background:
+                  "linear-gradient(to bottom, rgba(247,244,237,0) 0%, rgba(247,244,237,0.06) 30%, rgba(247,244,237,0.22) 48%, rgba(247,244,237,0.50) 62%, rgba(247,244,237,0.82) 74%, #f7f4ed 82%)",
+              }}
+            />
           </>
         )}
       </div>
-
-      {/* Bottom fade — extends BEYOND the section to eliminate any hard edge */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[1]"
-        style={{
-          height: "70%",
-          background:
-            "linear-gradient(to bottom, rgba(247,244,237,0) 0%, rgba(247,244,237,0.08) 20%, rgba(247,244,237,0.25) 40%, rgba(247,244,237,0.55) 60%, rgba(247,244,237,0.85) 80%, #f7f4ed 95%)",
-        }}
-      />
-      {/* Bleed patch — overlaps into the next section */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 z-[1]"
-        style={{
-          bottom: "-40px",
-          height: "80px",
-          background: "#f7f4ed",
-        }}
-      />
 
       <div className="relative z-10 w-full">{children}</div>
     </section>
