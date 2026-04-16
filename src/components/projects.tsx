@@ -64,7 +64,7 @@ function TagList({ items }: { items: string[] }) {
       {items.map((tag) => (
         <span
           key={tag}
-          className="rounded-full border border-border px-3 py-1 text-[11px] tracking-[0.04em] text-muted-foreground"
+          className="rounded-full border border-foreground/15 px-3 py-1 text-[11px] tracking-[0.04em] text-muted-foreground"
         >
           {tag}
         </span>
