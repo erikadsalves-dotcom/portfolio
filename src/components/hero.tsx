@@ -166,11 +166,11 @@ export default function Hero() {
               }}
             >
               <Image
-                src="/images/venus-botticelli.jpg"
-                alt="Nascimento de Vênus, Botticelli — referência de história da arte"
+                src="/images/art-letter.jpg"
+                alt="Homem Vitruviano, Leonardo da Vinci — referência de história da arte"
                 fill
                 className="object-cover"
-                style={{ objectPosition: "65% 12%" }}
+                style={{ objectPosition: "50% 20%" }}
                 sizes="44px"
               />
             </span>
