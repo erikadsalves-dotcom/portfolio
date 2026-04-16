@@ -2,7 +2,6 @@
 
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 
 // ─── Mockup browser with auto-rotating screenshots ───────────────────────────
@@ -15,30 +14,43 @@ const mockupImages = [
 
 function MockupBrowser() {
   const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const screenRef = useRef<HTMLDivElement>(null);
 
+  // Auto-cycle through screenshots; pauses while hovered so viewers
+  // can scroll through a full page without being yanked away.
   useEffect(() => {
+    if (paused) return;
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % mockupImages.length);
-    }, 3000);
+    }, 6000);
     return () => clearInterval(interval);
-  }, []);
+  }, [paused]);
+
+  // Reset scroll to top whenever the active screenshot changes.
+  useEffect(() => {
+    screenRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+  }, [current]);
 
   return (
     <div className="macbook-scale">
       <div className="device device-macbook-pro device-spacegray">
         <div className="device-frame">
-          <div className="device-screen relative overflow-hidden bg-black">
+          <div
+            ref={screenRef}
+            className="device-screen mockup-screen-scroll relative bg-white"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
             {mockupImages.map((src, i) => (
-              <Image
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
                 key={src}
                 src={src}
                 alt={`BigData Fortaleza — tela ${i + 1}`}
-                fill
-                className={`object-cover transition-opacity duration-700 ${
-                  i === current ? "opacity-100" : "opacity-0"
-                }`}
-                sizes="600px"
-                priority={i === 0}
+                className="block w-full"
+                style={{ display: i === current ? "block" : "none" }}
+                loading={i === 0 ? "eager" : "lazy"}
               />
             ))}
           </div>

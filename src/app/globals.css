@@ -127,6 +127,28 @@
   transform-origin: top center;
 }
 
+/* Scrollable mockup screen — replaces the default device-screen
+   overflow:hidden so visitors can scroll through a full-page capture. */
+.mockup-screen-scroll {
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.25) transparent;
+}
+.mockup-screen-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.mockup-screen-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.mockup-screen-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+}
+.mockup-screen-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
 /* ── Halftone / dot-matrix text effect ── */
 @layer base {
   .text-halftone {
