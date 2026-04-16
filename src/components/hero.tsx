@@ -137,7 +137,7 @@ export default function Hero() {
           >
             {/* "à" in editorial italic */}
             <span
-              className="italic text-foreground/50"
+              className="italic text-foreground"
               style={{
                 fontFamily: "var(--font-editorial)",
                 marginRight: "0.2em",
