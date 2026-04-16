@@ -27,7 +27,7 @@ export default function Brands() {
     <section
       ref={ref}
       aria-label="Marcas com as quais trabalhei"
-      className="border-y border-border bg-background py-16 sm:py-20"
+      className="bg-background py-16 sm:py-20"
     >
       {/* Heading */}
       <motion.div

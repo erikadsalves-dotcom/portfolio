@@ -8,6 +8,8 @@
   /* Fonts */
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
+  --font-display: var(--font-display);
+  --font-editorial: var(--font-editorial);
 
   /* Colors - Portfolio tokens */
   --color-background: var(--background);
@@ -100,4 +102,46 @@
 @keyframes pulse-g {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
+}
+
+/* ── Halftone / dot-matrix text effect ── */
+@layer base {
+  .text-halftone {
+    background:
+      radial-gradient(circle, var(--foreground) 1.2px, transparent 1.2px) !important;
+    background-size: 4.5px 4.5px !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+  }
+
+  .text-outline {
+    -webkit-text-fill-color: transparent !important;
+    -webkit-text-stroke: 2px var(--foreground) !important;
+    paint-order: stroke fill !important;
+    color: transparent !important;
+  }
+}
+
+@media (min-width: 640px) {
+  .text-halftone {
+    background:
+      radial-gradient(circle, var(--foreground) 1.8px, transparent 1.8px) !important;
+    background-size: 6px 6px !important;
+  }
+  .text-outline {
+    -webkit-text-stroke: 2px var(--foreground) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-halftone {
+    background:
+      radial-gradient(circle, var(--foreground) 2.5px, transparent 2.5px) !important;
+    background-size: 8px 8px !important;
+  }
+  .text-outline {
+    -webkit-text-stroke: 2.5px var(--foreground) !important;
+  }
 }

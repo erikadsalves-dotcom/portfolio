@@ -45,8 +45,8 @@ export default function Hero() {
             style={{ minWidth: "130px" }}
           >
             <span
-              className="font-serif leading-none text-foreground"
-              style={{ fontSize: "26px" }}
+              className="leading-none text-foreground"
+              style={{ fontFamily: "var(--font-editorial)", fontSize: "26px" }}
             >
               4+
             </span>
@@ -61,12 +61,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: [-5, 5, -5] }}
             transition={{
               opacity: { duration: 0.6, ease: "easeOut", delay: 0 },
-              y: {
-                delay: 0,
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              },
+              y: { delay: 0, duration: 4, repeat: Infinity, ease: "easeInOut" },
             }}
             className="relative z-10 overflow-hidden rounded-full"
             style={{
@@ -107,47 +102,67 @@ export default function Hero() {
         {/* ── Tag ── */}
         <motion.span
           {...fadeUp(0.15)}
-          className="mb-6 inline-block text-[11px] uppercase tracking-[0.25em] text-foreground/45"
+          className="mb-8 inline-block text-[11px] uppercase tracking-[0.25em] text-foreground/45"
+          style={{ fontFamily: "var(--font-display)" }}
         >
           Product Designer · Fortaleza, CE
         </motion.span>
 
-        {/* ── Creative mixed-font title ── */}
-        <div className="mb-6 text-center">
-          {/* Line 1: "Product" — serif italic, refined */}
-          <motion.div {...fadeUp(0.25)}>
+        {/* ════════════════════════════════════════════
+            CREATIVE MIXED-FONT TITLE
+            "Do problema à decisão certa."
+            ════════════════════════════════════════════ */}
+        <div className="mb-8 text-center">
+          {/* Line 1: "Do problema" — Syne bold, halftone dot-matrix */}
+          <motion.div {...fadeUp(0.25)} className="overflow-hidden">
             <span
-              className="font-serif italic text-foreground/60"
+              className="text-halftone block font-bold uppercase leading-[0.85]"
               style={{
-                fontSize: "clamp(22px, 3.5vw, 42px)",
-                letterSpacing: "0.02em",
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(42px, 8vw, 120px)",
+                letterSpacing: "-0.02em",
               }}
             >
-              Product
+              Do problema
             </span>
           </motion.div>
 
-          {/* Line 2: "DESIGNER" — bold sans with painting "i" */}
-          <motion.h1
+          {/* Line 2: "à decisão" — Instrument Serif italic + painting "i" */}
+          <motion.div
             {...fadeUp(0.4)}
-            className="flex items-baseline justify-center text-foreground"
+            className="flex items-baseline justify-center leading-[0.9]"
             style={{
-              fontSize: "clamp(52px, 9vw, 130px)",
-              lineHeight: 0.95,
-              letterSpacing: "-0.03em",
+              fontSize: "clamp(48px, 9vw, 130px)",
             }}
           >
-            <span className="font-sans font-bold uppercase">Des</span>
-
-            {/* The "i" — Botticelli's Venus (art history reference) */}
+            {/* "à" in editorial italic */}
             <span
-              className="relative mx-[0.02em] inline-block overflow-hidden"
+              className="italic text-foreground/50"
               style={{
-                width: "clamp(20px, 3.2vw, 48px)",
-                height: "clamp(50px, 8.6vw, 126px)",
-                borderRadius: "clamp(6px, 1vw, 16px)",
+                fontFamily: "var(--font-editorial)",
+                marginRight: "0.2em",
+              }}
+            >
+              à
+            </span>
+
+            {/* "dec" */}
+            <span
+              className="italic text-foreground"
+              style={{ fontFamily: "var(--font-editorial)" }}
+            >
+              dec
+            </span>
+
+            {/* The "i" — Botticelli's Venus */}
+            <span
+              className="relative mx-[0.01em] inline-block overflow-hidden"
+              style={{
+                width: "clamp(18px, 3vw, 44px)",
+                height: "clamp(46px, 8.5vw, 124px)",
+                borderRadius: "clamp(5px, 0.8vw, 14px)",
                 boxShadow:
-                  "inset 0 0 0 1.5px rgba(0,0,0,0.06), 0 2px 12px rgba(0,0,0,0.10)",
+                  "inset 0 0 0 1.5px rgba(0,0,0,0.06), 0 2px 12px rgba(0,0,0,0.12)",
               }}
             >
               <Image
@@ -156,31 +171,38 @@ export default function Hero() {
                 fill
                 className="object-cover"
                 style={{ objectPosition: "65% 12%" }}
-                sizes="48px"
+                sizes="44px"
               />
             </span>
 
-            <span className="font-sans font-bold uppercase">gner</span>
-          </motion.h1>
-        </div>
+            {/* "são" */}
+            <span
+              className="italic text-foreground"
+              style={{ fontFamily: "var(--font-editorial)" }}
+            >
+              são
+            </span>
+          </motion.div>
 
-        {/* ── Tagline ── */}
-        <motion.p
-          {...fadeUp(0.55)}
-          className="font-serif mb-4 text-center italic text-foreground/70"
-          style={{
-            fontSize: "clamp(18px, 2.5vw, 28px)",
-            lineHeight: 1.3,
-            letterSpacing: "-0.01em",
-          }}
-        >
-          Do problema à decisão certa.
-        </motion.p>
+          {/* Line 3: "certa." — Syne 800 solid, strong finish */}
+          <motion.div {...fadeUp(0.55)} className="overflow-hidden">
+            <span
+              className="block font-extrabold uppercase leading-[0.85] text-foreground"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(42px, 8vw, 120px)",
+                letterSpacing: "-0.02em",
+              }}
+            >
+              certa.
+            </span>
+          </motion.div>
+        </div>
 
         {/* ── Description ── */}
         <motion.p
-          {...fadeUp(0.65)}
-          className="mb-10 max-w-lg text-center text-sm leading-relaxed text-foreground/50 sm:text-base"
+          {...fadeUp(0.7)}
+          className="mb-10 max-w-md text-center text-sm leading-relaxed text-foreground/50 sm:text-base"
         >
           Foco em discovery, métricas e estratégia — transformando complexidade
           em produtos digitais que funcionam de verdade.
@@ -188,7 +210,7 @@ export default function Hero() {
 
         {/* ── Buttons ── */}
         <motion.div
-          {...fadeUp(0.75)}
+          {...fadeUp(0.8)}
           className="flex flex-wrap items-center justify-center gap-4"
         >
           <a
