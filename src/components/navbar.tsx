@@ -6,8 +6,8 @@ import { motion } from "framer-motion";
 
 const NAV_LINKS = [
   { label: "Projetos", href: "#projetos" },
-  { label: "Sobre", href: "#sobre" },
   { label: "Skills", href: "#skills" },
+  { label: "Sobre", href: "#sobre" },
 ];
 
 export default function Navbar() {
@@ -63,8 +63,8 @@ export default function Navbar() {
           </motion.span>
         </Link>
 
-        {/* Nav links — desktop only */}
-        <ul className="hidden list-none items-center gap-8 md:flex">
+        {/* Nav links — desktop only, centered on the page */}
+        <ul className="pointer-events-none absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 list-none items-center gap-8 md:flex [&>li]:pointer-events-auto">
           {NAV_LINKS.map(({ label, href }) => (
             <li key={href}>
               <motion.div
