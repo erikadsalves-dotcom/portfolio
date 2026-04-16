@@ -10,6 +10,9 @@ const NAV_LINKS = [
   { label: "Sobre", href: "#sobre" },
 ];
 
+// Warm cream matches --background in globals.css (#f7f4ed)
+const CREAM_RGB = "247,244,237";
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
@@ -33,16 +36,16 @@ export default function Navbar() {
         animate={
           scrolled
             ? {
-                backgroundColor: "rgba(247,244,237,0.82)",
+                backgroundColor: `rgba(${CREAM_RGB},0.82)`,
                 backdropFilter: "blur(24px)",
                 borderBottomWidth: "1px",
                 borderBottomColor: "hsl(var(--border) / 0.5)",
               }
             : {
-                backgroundColor: "rgba(247,244,237,0)",
+                backgroundColor: `rgba(${CREAM_RGB},0)`,
                 backdropFilter: "blur(0px)",
                 borderBottomWidth: "1px",
-                borderBottomColor: "rgba(247,244,237,0)",
+                borderBottomColor: `rgba(${CREAM_RGB},0)`,
               }
         }
         transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -63,7 +66,6 @@ export default function Navbar() {
           </motion.span>
         </Link>
 
-        {/* Nav links — desktop only, centered on the page */}
         <ul className="pointer-events-none absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 list-none items-center gap-8 md:flex [&>li]:pointer-events-auto">
           {NAV_LINKS.map(({ label, href }) => (
             <li key={href}>
@@ -78,7 +80,6 @@ export default function Navbar() {
                     color: scrolled
                       ? "hsl(var(--foreground))"
                       : "hsl(var(--foreground) / 0.6)",
-                    transition: "color 0.35s ease",
                   }}
                 >
                   {label}

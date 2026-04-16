@@ -127,32 +127,16 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Line 2: "à decisão" — Instrument Serif italic + painting "i" */}
+          {/* Line 2: "à decisão" — Instrument Serif italic */}
           <motion.div
             {...fadeUp(0.4)}
-            className="flex items-baseline justify-center leading-[0.9]"
+            className="flex items-baseline justify-center italic leading-[0.9] text-foreground"
             style={{
+              fontFamily: "var(--font-editorial)",
               fontSize: "clamp(48px, 9vw, 130px)",
             }}
           >
-            {/* "à" in editorial italic */}
-            <span
-              className="italic text-foreground"
-              style={{
-                fontFamily: "var(--font-editorial)",
-                marginRight: "0.2em",
-              }}
-            >
-              à
-            </span>
-
-            {/* "decisão" */}
-            <span
-              className="italic text-foreground"
-              style={{ fontFamily: "var(--font-editorial)" }}
-            >
-              decisão
-            </span>
+            à decisão
           </motion.div>
 
           {/* Line 3: "certa." — Syne 800 solid, strong finish */}
