@@ -2,14 +2,17 @@
 
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 
 // ─── Mockup browser with auto-rotating screenshots ───────────────────────────
+// width/height match each source file so next/image preserves the natural
+// aspect ratio and can serve correctly-sized WebP variants.
 
 const mockupImages = [
-  "/images/painel-monitoramento.webp",
-  "/images/tela-login.webp",
-  "/images/funcionalidades-permitidas.webp",
+  { src: "/images/painel-monitoramento.webp", width: 1400, height: 7286 },
+  { src: "/images/tela-login.webp", width: 1400, height: 995 },
+  { src: "/images/funcionalidades-permitidas.webp", width: 1400, height: 1946 },
 ];
 
 function MockupBrowser() {
@@ -42,15 +45,17 @@ function MockupBrowser() {
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
-            {mockupImages.map((src, i) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                key={src}
-                src={src}
+            {mockupImages.map((img, i) => (
+              <Image
+                key={img.src}
+                src={img.src}
                 alt={`BigData Fortaleza — tela ${i + 1}`}
-                className="block w-full"
+                width={img.width}
+                height={img.height}
+                sizes="(max-width: 768px) 90vw, 600px"
+                className="block h-auto w-full"
                 style={{ display: i === current ? "block" : "none" }}
-                loading={i === 0 ? "eager" : "lazy"}
+                priority={i === 0}
               />
             ))}
           </div>

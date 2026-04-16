@@ -106,25 +106,21 @@
 }
 
 /* ── devices.css MacBook Pro responsive scaling ──
-   devices.css ships fixed 740×434 dimensions. Wrap the device in this
-   container to scale it proportionally to whatever width is available.
-   transform-origin: top center keeps the device horizontally centered
-   inside the container at any width. */
+   devices.css ships fixed 740×434 dimensions. The container uses `zoom`
+   rather than `transform: scale()` so the device and its screenshot
+   stay crisp — `zoom` scales the rendering pipeline itself (fonts,
+   bitmaps re-sampled at target size) while `scale()` rasterizes first
+   at natural size and then downsamples, which blurs. */
 .macbook-scale {
   container-type: inline-size;
   width: 100%;
-  aspect-ratio: 740 / 434;
-  overflow: hidden;
-  position: relative;
   display: flex;
   justify-content: center;
 }
 .macbook-scale > .device {
-  flex-shrink: 0;
-  /* length / length = unitless number (required by scale()).
-     min(1, …) prevents upscaling above the device's natural 740px. */
-  transform: scale(min(1, calc(100cqw / 740px)));
-  transform-origin: top center;
+  /* length / length = unitless number. min(1, …) caps at natural size
+     so the device never upscales past its 740px width. */
+  zoom: min(1, calc(100cqw / 740px));
 }
 
 /* Scrollable mockup screen — replaces the default device-screen
