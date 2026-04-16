@@ -24,33 +24,30 @@ function MockupBrowser() {
   }, []);
 
   return (
-    <div className="overflow-hidden rounded-xl border border-border bg-[#f0f0ee] shadow-md">
-      {/* Browser chrome */}
-      <div className="flex items-center gap-2 border-b border-border bg-[#e8e8e6] px-4 py-2.5">
-        <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-        <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-        <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-        <div className="mx-3 flex flex-1 items-center rounded-md bg-[#d8d8d6] px-3 py-1">
-          <span className="truncate text-[11px] tracking-[0.02em] text-muted-foreground">
-            bigdata.fortaleza.ce.gov.br
-          </span>
+    <div className="macbook-scale">
+      <div className="device device-macbook-pro device-spacegray">
+        <div className="device-frame">
+          <div className="device-screen relative overflow-hidden bg-black">
+            {mockupImages.map((src, i) => (
+              <Image
+                key={src}
+                src={src}
+                alt={`BigData Fortaleza — tela ${i + 1}`}
+                fill
+                className={`object-cover transition-opacity duration-700 ${
+                  i === current ? "opacity-100" : "opacity-0"
+                }`}
+                sizes="600px"
+                priority={i === 0}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-      {/* Screen area */}
-      <div className="relative aspect-[16/10] w-full overflow-hidden">
-        {mockupImages.map((src, i) => (
-          <Image
-            key={src}
-            src={src}
-            alt={`BigData Fortaleza — tela ${i + 1}`}
-            fill
-            className={`object-cover transition-opacity duration-700 ${
-              i === current ? "opacity-100" : "opacity-0"
-            }`}
-            sizes="(max-width: 768px) 100vw, 50vw"
-            priority={i === 0}
-          />
-        ))}
+        <div className="device-stripe" />
+        <div className="device-header" />
+        <div className="device-sensors" />
+        <div className="device-btns" />
+        <div className="device-power" />
       </div>
     </div>
   );

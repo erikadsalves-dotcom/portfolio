@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "devices.css/dist/devices.min.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -102,6 +103,21 @@
 @keyframes pulse-g {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
+}
+
+/* ── devices.css MacBook Pro responsive scaling ──
+   devices.css ships fixed 740×434 dimensions. Wrap the device in this
+   container to scale it proportionally to whatever width is available. */
+.macbook-scale {
+  container-type: inline-size;
+  width: 100%;
+  aspect-ratio: 740 / 434;
+  overflow: hidden;
+  position: relative;
+}
+.macbook-scale > .device {
+  transform: scale(calc(100cqw / 740));
+  transform-origin: top left;
 }
 
 /* ── Halftone / dot-matrix text effect ── */
