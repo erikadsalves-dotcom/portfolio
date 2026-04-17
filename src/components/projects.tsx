@@ -22,13 +22,15 @@ function MockupBrowser() {
 
   // Auto-cycle through screenshots; pauses while hovered so viewers
   // can scroll through a full page without being yanked away.
+  // Depends on `current` so the timer restarts whenever the active
+  // screenshot changes — including manual clicks on the stepper.
   useEffect(() => {
     if (paused) return;
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % mockupImages.length);
     }, 6000);
     return () => clearInterval(interval);
-  }, [paused]);
+  }, [paused, current]);
 
   // Reset scroll to top whenever the active screenshot changes.
   useEffect(() => {
@@ -36,35 +38,60 @@ function MockupBrowser() {
   }, [current]);
 
   return (
-    <div className="macbook-scale">
-      <div className="device device-macbook-pro device-spacegray">
-        <div className="device-frame">
-          <div
-            ref={screenRef}
-            className="device-screen mockup-screen-scroll relative bg-white"
-            onMouseEnter={() => setPaused(true)}
-            onMouseLeave={() => setPaused(false)}
-          >
-            {mockupImages.map((img, i) => (
-              <Image
-                key={img.src}
-                src={img.src}
-                alt={`BigData Fortaleza — tela ${i + 1}`}
-                width={img.width}
-                height={img.height}
-                sizes="(max-width: 768px) 90vw, 600px"
-                className="block h-auto w-full"
-                style={{ display: i === current ? "block" : "none" }}
-                priority={i === 0}
-              />
-            ))}
+    <div className="flex flex-col items-center gap-4">
+      <div className="macbook-scale">
+        <div className="device device-macbook-pro device-spacegray">
+          <div className="device-frame">
+            <div
+              ref={screenRef}
+              className="device-screen mockup-screen-scroll relative bg-white"
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
+            >
+              {mockupImages.map((img, i) => (
+                <Image
+                  key={img.src}
+                  src={img.src}
+                  alt={`BigData Fortaleza — tela ${i + 1}`}
+                  width={img.width}
+                  height={img.height}
+                  sizes="(max-width: 768px) 90vw, 600px"
+                  className="block h-auto w-full"
+                  style={{ display: i === current ? "block" : "none" }}
+                  priority={i === 0}
+                />
+              ))}
+            </div>
           </div>
+          <div className="device-stripe" />
+          <div className="device-header" />
+          <div className="device-sensors" />
+          <div className="device-btns" />
+          <div className="device-power" />
         </div>
-        <div className="device-stripe" />
-        <div className="device-header" />
-        <div className="device-sensors" />
-        <div className="device-btns" />
-        <div className="device-power" />
+      </div>
+
+      {/* Stepper: active pill expands, inactives stay small.
+          Clickable to jump to a specific screen. */}
+      <div className="flex items-center gap-1.5">
+        {mockupImages.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            aria-label={`Ver tela ${i + 1} de ${mockupImages.length}`}
+            aria-current={i === current ? "true" : undefined}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setCurrent(i);
+            }}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              i === current
+                ? "w-6 bg-foreground/70"
+                : "w-1.5 bg-foreground/20 hover:bg-foreground/40"
+            }`}
+          />
+        ))}
       </div>
     </div>
   );
